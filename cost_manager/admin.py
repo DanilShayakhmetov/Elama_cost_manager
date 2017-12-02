@@ -1,12 +1,15 @@
 from django.contrib import admin
-from .models import Post
+from .models import Account_Journal,Account_transaction
 
-class AuthorAdmin(admin.ModelAdmin):
+class Bank_Page(admin.StackedInline):
     date_hierarchy = 'pub_date'
+    model = Account_Journal
+    extra = 5
 
 
+class ManageAdmin(admin.ModelAdmin):
+    inlines = [Bank_Page]
+    list_filter = ['bank_account_title','account_transaction_date']
 
-class PersonAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name')
 
-admin.site.register(Post)
+admin.site.register(Account_transaction,ManageAdmin)
