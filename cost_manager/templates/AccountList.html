@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% block AccountList %}
+<div class="container">
+  <h2>Basic Table</h2>
+  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Account</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for account in accounts %}
+        <tr><td><a href = 'http://127.0.0.1:8009/costmanager/transactions/get/{{ account.id }}'> {{ account.bank_account_title }}</a></td></tr>
+    {% endfor %}
+      <tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

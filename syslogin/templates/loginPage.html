@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% block LoginPage %}
+  <div class="container">
+  <h2>Vertical (basic) form</h2>
+<form action='/auth/login/' method='post'>{% csrf_token %}
+    <div class="form-group">
+      <label for="username">Name:</label>
+      <input type="text" class="form-control" id="username"  name="username" maxlength="20" size="20">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password"  name="password" maxlength="20" size="20">
+    </div>
+    {% if login_error %}
+        <label class="errors">{{ login_error }}</label>
+        {% endif %}
+    <button type="submit" class="btn btn-default">Login</button>
+
+</form>
+</div>
+{% endblock %}
+
+{#{% block LoginPage %}#}
+{##}
+{#  {% if login_error %}#}
+{#    <p class="error">Сожалеем, вы неправильно ввели логин или пароль</p>#}
+{#  {% endif %}#}
+{##}
+{#  <form action='/auth/login/' method='post'>{% csrf_token %}#}
+{#    <label for="username">Логин:</label>#}
+{#    <input type="text" name="username" value="" id="username">#}
+{#    <label for="password">Пароль:</label>#}
+{#    <input type="password" name="password" value="" id="password">#}
+{#    <input type="submit" value="login" />#}
+{#    <input type="hidden" name="next" value="{{ next|escape }}" />#}
+{#  </form>#}
+{##}
+{#{% endblock %}#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#    <div class="checkbox">#}
+{#      <label><input type="checkbox" name="remember"> Remember me</label>#}
+{#    </div>#}

@@ -1,93 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Cost Manager</title>
-  <style type="text/css">
-   body {
-    font: 10pt Arial, Helvetica, sans-serif; /* Шрифт на веб-странице */
-    background: #e1dfb9; /* Цвет фона */
-   }
-   h2 {
-    font-size: 1.1em; /* Размер шрифта */
-    color: #800040; /* Цвет текста */
-    margin-top: 0; /* Отступ сверху */
-   }
-   #container {
-    width: 1000px; /* Ширина слоя */
-    height: auto;
-    margin: 0 auto; /* Выравнивание по центру */
-    background: #f0f0f0; /* Цвет фона левой колонки */
-   }
-   #header {
-    font-size: 2.2em; /* Размер текста */
-    text-align: center; /* Выравнивание по центру */
-    padding: 5px; /* Отступы вокруг текста */
-    background: #8fa09b; /* Цвет фона шапки */
-    color: #ffe; /* Цвет текста */
-   }
-   #sidebar {
-    margin-top: 10px;
-    width: 110px; /* Ширина слоя */
-    padding: 0 10px; /* Отступы вокруг текста */
-    float: left; /* Обтекание по правому краю */
-   }
-   #content {
-    margin-left: 130px; /* Отступ слева */
-    padding: 10px; /* Поля вокруг текста */
-    background: #fff; /* Цвет фона правой колонки */
-   }
-   #footer {
-    background: #8fa09b; /* Цвет фона подвала */
-    color: #fff; /* Цвет текста */
-    padding: 5px; /* Отступы вокруг текста */
-    clear: left; /* Отменяем действие float */
-   }
-   .text {
-    text-align:  center;
-   }
-  </style>
- </head>
- <body>
-  <div id="container">
-   <div id="header">Cost Manager</div>
-   <div id="sidebar">
-    <p><a href="stat.html">HOME</a></p>
-    <p><a href="interview.html">Expenditure Log</a></p>
-    <p><a href="ask.html">Конкурсные вопросы</a></p>
-    <p><a href="ask.html">Конкурсные вопросы</a></p>
-   </div>
-      <div class="text">
-          <h4>___________</h4>
-          <h2>Transaction</h2>
-          <h4>___________</h4>
-      </div>
-   <div id="content">
-    <ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-<form action="/costmanager/1/addPost/1" method="post">{% csrf_token %}
-
-    <h4>{{JrnlStat}}</h4>
-    <h4>{{accTitle}}</h4>
-
-
-
-<h4>{{expName}}</h4>
-
-
-<h4>{{currency}}</h4>
-<h4>{{amount}}</h4>
-<h4>{{ comment }} </h4>
-<h4>{{ date }}</h4>
-<button type="submit" class="save btn btn-default">Save</button>
-</form>
-
-
-
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Cost Manager</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+        {% if username %}
+        <li class="active"><a href="/authorization/logout/"><ul class="align-right">Sign Out {{ username }}</ul></a></li>
+        {% else %}
+        <li class="active"><a href="/authorization/login/"><ul class="align-right">Login</ul></a></li>
+        {% endif %}
     </ul>
-   </div>
-   <div id="footer"></div>
   </div>
- </body>
+</nav>
+
+<div class="container">
+{% block SendForm %}
+{% endblock %}
+
+{% block AccountList %}
+{% endblock %}
+
+{% block Journal %}
+{% endblock %}
+
+{% block LoginPage %}
+{% endblock %}
+</div>
+
+</body>
 </html>

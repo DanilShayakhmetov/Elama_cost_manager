@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block Journal %}
+<div class="container">
+  <h2>Basic Table</h2>
+  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Account</th>
+        <th>Status</th>
+        <th>Expenditure</th>
+        <th>Currency</th>
+        <th>Amount</th>
+        <th>Comment</th>
+        <th>Date/time</th>
+      </tr>auth_user_user_permissions
+    </thead>
+    <tbody>
+
+          {% for transaction in transactions %}
+              <tr>
+              <td>{{ account }}</td>
+              <td>{{ transaction.account_jornal_status }}</td>
+              <td>{{ transaction.account_transaction_expenditure_name }}</td>
+              <td>{{ transaction.account_transaction_currency }}</td>
+              <td>{{ transaction.account_transaction_amount }}</td>
+              <td>{{ transaction.account_transaction_comment }}</td>
+              <td>{{ transaction.account_transaction_date }}</td>
+              </tr>
+          {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

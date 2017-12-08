@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block SendForm %}
+<h3>Basic Navbar Example</h3>
+<form action="/costmanager/1/addPost/1" method="post">{% csrf_token %}
+<h4>{{Title}}</h4>
+<h4>{{JrnlStat}}</h4>
+<h4>{{accTitle}}</h4>
+<h4>{{expName}}</h4>
+<h4>{{currency}}</h4>
+<h4>{{amount}}</h4>
+<h4>{{ comment }}</h4>
+<h4>{{ date }}</h4>
+<button type="submit" class="save btn btn-default">Save</button>
+</form>
+{% endblock %}

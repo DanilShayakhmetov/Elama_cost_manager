@@ -18,7 +18,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^costmanager/',include('cost_manager.urls'))
+    url(r'^costmanager/',include('cost_manager.urls')),
+    url(r'^auth/',include('syslogin.urls')),
+    url(r'^',include('cost_manager.urls'))
+
     # url(r'^register/$', views.RegisterFormView.as_view())
 ]
 

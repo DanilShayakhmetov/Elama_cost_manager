@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from cost_manager.models import Account_transaction
+from cost_manager.models import Account_transaction, Bank_Account
 from django import forms
 
 # from django.forms.extras.widgets import SelectDateWidget
@@ -26,7 +26,7 @@ class AccountJournalStatus(ModelForm):
 
 class BankAccountTitle(ModelForm):
     class Meta():
-        model = Account_transaction
+        model = Bank_Account
         fields = ('bank_account_title',)
 
 
