@@ -29,14 +29,14 @@ from django.contrib import auth
 @csrf_protect
 def  TryToSave ( request, forma_id = 1):
     form = AccountComment(request.POST)
-    sec_form = Account_transaction.objects.get(id = forma_id)
-    if form.is_valid()and sec_form.is_valid():
+    # sec_form = Account_transaction.objects.get(id = forma_id)
+    if form.is_valid():
         comment = form.save(commit=False)
-        title = sec_form.save(commit=True)
+        # title = sec_form.save(commit=True)
         form.save()
-        sec_form.save()
+        # sec_form.save()
 
-    return  render(request ,  "trytosave.html" ,  {'form':form},{'sec_form':sec_form})
+    return  render(request ,  'Startpage.html' ,  {'form':form})
 
 
 

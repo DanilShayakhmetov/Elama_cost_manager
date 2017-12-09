@@ -21,9 +21,9 @@
       <li><a href="#">Page 2</a></li>
       <li><a href="#">Page 3</a></li>
         {% if username %}
-        <li class="active"><a href="/authorization/logout/"><ul class="align-right">Sign Out {{ username }}</ul></a></li>
+        <li class="active"><a href="/auth/logout/"><ul class="align-right">Sign Out {{ username }}</ul></a></li>
         {% else %}
-        <li class="active"><a href="/authorization/login/"><ul class="align-right">Login</ul></a></li>
+        <li class="active"><a href="/auth/login/"><ul class="align-right">Login</ul></a></li>
         {% endif %}
     </ul>
   </div>
@@ -40,6 +40,11 @@
 {% endblock %}
 
 {% block LoginPage %}
+{% endblock %}
+
+{% block registrPage %}
+{% endblock %}
+{% block support %}
 {% endblock %}
 </div>
 

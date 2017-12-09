@@ -1,12 +1,14 @@
 from django.db import models
 from django.utils import timezone
-
+from django.conf import settings
 
 
 
 class Bank_Account(models.Model):
     class Meta():
         db_table = 'User Account'
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     TEXT_TITLE = "Введите имя счета, например: Основной \n Валютный \n Сберегательный"
     bank_account_title = models.CharField(verbose_name='Account Name:', max_length=30, blank=True, help_text=TEXT_TITLE)
     bank_account_balance = models.IntegerField(verbose_name='Account balance:',default=0)
