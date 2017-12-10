@@ -16,7 +16,7 @@ class Bank_Page(admin.TabularInline):
 
 class AuthorAdmin(admin.ModelAdmin):
     list_filter = ['bank_account_title']
-    fields = ['bank_account_title','bank_account_balance']
+    fields = ['bank_account_title','bank_account_balance','user',]
     inlines = [Bank_Page]
 
 

@@ -51,7 +51,7 @@ def form_test(request):
     account_comment = AccountComment(request.POST or None)
     expenditure_name = ExpenditureName(request.POST or None)
     args = {}
-    args['title'] = user_name
+    args['username'] = user_name
     args['date'] = account_date
     args['currency'] = account_currency
     args['amount'] = account_amount
@@ -81,8 +81,10 @@ def Journal(request, account_id = 1):
     user_name = auth.get_user(request).get_username()
     bank_account_id  = Bank_Account.objects.get(id = account_id)
     account =  bank_account_id.bank_account_title
-    all_transactions = Account_transaction.objects.filter(bank_account=account_id)
+    userID = bank_account_id.user_id
+    all_transactions = Account_transaction.objects.filter(bank_account_id=account_id)
     args = {}
+    args['ID'] = userID
     args['username'] = user_name
     args['account'] = account
     args['transactions'] =  all_transactions
