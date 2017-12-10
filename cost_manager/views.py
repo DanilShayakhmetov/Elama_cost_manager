@@ -42,10 +42,8 @@ def  TryToSave ( request, forma_id = 1):
 
 
 @csrf_protect
-def form_test(request, account_id = 1):
+def form_test(request):
     user_name = auth.get_user(request).get_username()
-    bank_account_id = Bank_Account.objects.get(id=account_id)
-    account_title = bank_account_id.bank_account_title
     account_status = AccountJournalStatus(request.POST or None)
     account_date = AccountDate(request.POST or None)
     account_currency = AccountCurrency(request.POST or None)
@@ -53,19 +51,17 @@ def form_test(request, account_id = 1):
     account_comment = AccountComment(request.POST or None)
     expenditure_name = ExpenditureName(request.POST or None)
     args = {}
-    args['username']  = user_name
-    args['Title'] = account_title
+    args['title'] = user_name
     args['date'] = account_date
     args['currency'] = account_currency
     args['amount'] = account_amount
     args['comment'] = account_comment
     args['expName'] = expenditure_name
     args['JrnlStat'] = account_status
-    if request.method == 'POST' and user_name and account_title.is_valid() and account_status.is_valid()\
+    if request.method == 'POST' and account_status.is_valid()\
         and account_date.is_valid() and account_currency.is_valid() and account_amount.is_valid() \
-        and account_comment.is_valid() and expenditure_name.is_valid() and account_status.is_valid():
-        user_name.save()
-        account_title.save()
+        and account_comment.is_valid() and expenditure_name.is_valid():
+
         account_date.save()
         account_currency.save()
         account_amount.save()

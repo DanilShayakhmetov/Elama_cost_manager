@@ -8,7 +8,7 @@ class Bank_Account(models.Model):
     class Meta():
         db_table = 'User Account'
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     TEXT_TITLE = "Введите имя счета, например: Основной \n Валютный \n Сберегательный"
     bank_account_title = models.CharField(verbose_name='Account Name:', max_length=30, blank=True, help_text=TEXT_TITLE)
     bank_account_balance = models.IntegerField(verbose_name='Account balance:',default=0)
@@ -16,7 +16,7 @@ class Bank_Account(models.Model):
 class Account_transaction(models.Model):
     class Meta():
         db_table = 'all transaction'
-    bank_account = models.ForeignKey(Bank_Account)
+    bank_account = models.ForeignKey(Bank_Account, default=1 )
     ACCOUNT_JOURNAL_STATUS = (('+', 'Приход'), ('-', 'Расход'))
     ACCOUNT_TRANSACTION_CURRENCY = (('USD', 'dollars'), ('EUR', 'euro'), ('RUR', 'rubles'))
     TEXT_EXP = "Введите статью расходов или источник дохода"

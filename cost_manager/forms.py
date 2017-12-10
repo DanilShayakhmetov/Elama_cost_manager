@@ -16,18 +16,13 @@ from django import forms
 #     comment = forms.CharField(widget=forms.Textarea)
 
 
+
+
+
 class AccountJournalStatus(ModelForm):
     class Meta():
         model = Account_transaction
         fields = ('account_jornal_status',)
-
-
-
-
-class BankAccountTitle(ModelForm):
-    class Meta():
-        model = Bank_Account
-        fields = ('bank_account_title',)
 
 
 
