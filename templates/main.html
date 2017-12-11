@@ -17,10 +17,9 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="/accounts/all/">Journal</a></li>
-      <li><a href="/1/addPost/1">Expenditure/Enrollment</a></li>
-      <li><a href="/create/new/">Account managing</a></li>
-      <li><a href="/goals/new/">Goals</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
         {% if username %}
         <li class="active"><a href="/auth/logout/"><ul class="align-right">Sign Out {{ username }}</ul></a></li>
         {% else %}
@@ -45,16 +44,8 @@
 
 {% block registrPage %}
 {% endblock %}
-
 {% block support %}
 {% endblock %}
-
-{% block CreateAccount %}
-{% endblock %}
-
-{% block MyGoals %}
-{% endblock %}
-
 </div>
 
 </body>
