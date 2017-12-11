@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Account_transaction, Bank_Account #don't imported Account_Journal
+from .models import Account_transaction #don't imported Account_Journal
 
 # class Bank_Page(admin.TabularInline):
 #     date_hierarchy = 'pub_date'

@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^accounts/all/', views.AccountList),
     url(r'^create/new/', views.CreateAccount),
     url(r'^goals/new/', views.Goals),
+    url(r'^goalslist/', views.GoalsList),
     url(r'^transactions/get/(?P<account_id>\d+)$', views.Journal),
     url(r'^', views.TryToSave),
 ]

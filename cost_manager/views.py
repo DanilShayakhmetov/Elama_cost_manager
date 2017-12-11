@@ -23,7 +23,7 @@ from django.shortcuts import render_to_response
 from cost_manager.forms import AccountJournalStatus, ExpenditureName,AccountDate,AccountCurrency,AccountAmount, AccountComment, ProtoForm, ProtoBankForm,ProtoGoalsForm
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render
-from cost_manager.models import Account_transaction,Bank_Account
+from cost_manager.models import Account_transaction,Goals_Account
 from django.contrib import auth
 from django.contrib.auth.models import User
 
@@ -31,8 +31,6 @@ from django.contrib.auth.models import User
 @csrf_protect
 def  TryToSave ( request):
     user_name = auth.get_user(request).get_username()
-
-
     return  render(request ,  'Startpage.html' ,  {'username':user_name})
 
 
@@ -118,6 +116,19 @@ def Goals(request):
         author.save()
 
     return render(request,'MyGoals.html',args)
+
+
+def GoalsList(request):
+    user_name = auth.get_user(request).get_username()
+    USER = request.user
+    USER_ID = USER.id
+    list_of_goals = Goals_Account.objects.filter(user_id=USER_ID)
+    args = {}
+    args['username'] = user_name
+    args['goals'] = list_of_goals
+    return render_to_response('GoalsList.html',args)
+
+
 
 
 

@@ -1,16 +1,15 @@
 {% extends 'main.html' %}
 {% block MyGoals %}
-<h3>Basic Navbar Example</h3>
+
 <form action="/costmanager/goals/new/" method="post">{% csrf_token %}
-
-    {{ username }}
-
-    {{ ID }}
+<h3><p>User: {{ username }} - Id: {{ ID }}</p></h3>
 
     {{ form.as_p }}
 
 
 <button type="submit" class="save btn btn-default">Save</button>
 </form>
+
+<h2>Look at your<a href="/goalslist/"> goals</a></h2>
 
 {% endblock %}

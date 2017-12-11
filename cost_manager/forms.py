@@ -41,7 +41,7 @@ class ProtoBankForm(ModelForm):
 class ProtoGoalsForm(ModelForm):
     class Meta():
         model = Goals_Account
-        fields = '__all__'
+        fields = ['account_facilities','account_goals','goals_mood',]
 
 
 # class BankForm(forms.Form):

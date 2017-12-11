@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block GoalsList %}
+<div class="container">
+  <h2>Basic Table</h2>
+  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Goal</th>
+        <th>Facilities</th>
+        <th>Mood</th>
+      </tr>{{ username }}
+
+    </thead>
+    <tbody>
+          {% for items in goals %}
+              <tr>
+              <td>{{ items.account_goals }}</td>
+              <td>{{ items.account_facilities }}</td>
+              <td>{{ items.goals_mood }}</td>
+              </tr>
+          {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

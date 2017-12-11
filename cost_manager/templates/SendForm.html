@@ -1,11 +1,11 @@
 {% extends 'main.html' %}
 {% block SendForm %}
-<h3>Basic Navbar Example</h3>
+
 <form action="/costmanager/1/addPost/1" method="post">{% csrf_token %}
 
+<h3><p>User: {{ username }} - Id: {{ ID }}</p></h3>
 
 
-    <p>User: {{ username }} - Id: {{ ID }}</p>
     <p>Account Title: {{ form.account_title }}</p>
     <p>Operation status: {{ form.account_jornal_status }}</p>
     <p>Expenditure/Enrollment tag:{{ form.account_transaction_expenditure_name }}</p>
