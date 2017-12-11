@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     {% for account in accounts %}
-        <tr><td><a href = 'costmanager/transactions/get/{{ account.id }}'> {{ account.bank_account_title }}</a></td></tr>
+        <tr><td><a href = '/transactions/get/{{ account.id }}'> {{ account.bank_account_title }}</a></td></tr>
     {% endfor %}
       <tr>
     </tbody>

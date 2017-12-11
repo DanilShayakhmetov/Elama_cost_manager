@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% block CreateAccount %}
+<h3>Basic Navbar Example</h3>
+<form action="/costmanager/create/new/" method="post">{% csrf_token %}
+
+    {{ username }}
+    {{ ID }}
+
+    {{ bankform.as_p }}
+
+
+
+    <p>{{ form.bank_account }}</p>
+
+
+
+
+<button type="submit" class="save btn btn-default">Save</button>
+</form>
+{% endblock %}

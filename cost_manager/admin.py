@@ -4,6 +4,7 @@ from .models import Account_transaction, Bank_Account #don't imported Account_Jo
 class Bank_Page(admin.TabularInline):
     date_hierarchy = 'pub_date'
     model = Account_transaction
+    fields = ['bank_account','user']
     list_filter = ['bank_account_title', 'account_transaction_date']
     extra = 1
 

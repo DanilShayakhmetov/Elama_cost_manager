@@ -16,6 +16,7 @@ class Bank_Account(models.Model):
 class Account_transaction(models.Model):
     class Meta():
         db_table = 'all transaction'
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     bank_account = models.ForeignKey(Bank_Account, default=1 )
     ACCOUNT_JOURNAL_STATUS = (('+', 'Приход'), ('-', 'Расход'))
     ACCOUNT_TRANSACTION_CURRENCY = (('USD', 'dollars'), ('EUR', 'euro'), ('RUR', 'rubles'))
@@ -27,6 +28,14 @@ class Account_transaction(models.Model):
     account_transaction_amount = models.IntegerField(verbose_name='Amount:',default=0)
     account_transaction_comment = models.CharField(verbose_name='comment:',max_length=30,default="comment...")
 
+
+class Goals_Account(models.Model):
+    class Meta():
+        db_table = 'Account goals'
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    account_facilities = models.IntegerField(verbose_name='Facilities:', default=0)
+    account_goals = models.TextField(verbose_name='Goal:')
 
 
 

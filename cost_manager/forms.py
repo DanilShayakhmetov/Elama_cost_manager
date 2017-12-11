@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from cost_manager.models import Account_transaction, Bank_Account
+from cost_manager.models import Account_transaction, Bank_Account , Goals_Account
 from django import forms
 
 # from django.forms.extras.widgets import SelectDateWidget
@@ -14,8 +14,33 @@ from django import forms
 #     favorite_colors = forms.MultipleChoiceField(required=False,
 #         widget=forms.CheckboxSelectMultiple, choices=FAVORITE_COLORS_CHOICES)
 #     comment = forms.CharField(widget=forms.Textarea)
+#
+# class AccountJournalStatus(ModelForm):
+#     class Meta():
+#         model = Account_transaction
+#         fields = ('bank_account',)
+
+class ProtoForm(ModelForm):
+    class Meta():
+        model = Account_transaction
+        fields = '__all__'
+
+class ProtoBankForm(ModelForm):
+
+    class Meta():
+        model = Bank_Account
+        fields = '__all__'
 
 
+class ProtoGoalsForm(ModelForm):
+    class Meta():
+        model = Goals_Account
+        fields = '__all__'
+
+
+# class BankForm(forms.Form):
+#
+#     bank_acc = forms.ModelMultipleChoiceField(queryset=Account_transaction.objects.all())
 
 
 

@@ -2,13 +2,30 @@
 {% block SendForm %}
 <h3>Basic Navbar Example</h3>
 <form action="/costmanager/1/addPost/1" method="post">{% csrf_token %}
-    <h2>{{username}}</h2>
-<h4>{{JrnlStat}}</h4>
-<h4>{{expName}}</h4>
-<h4>{{currency}}</h4>
-<h4>{{amount}}</h4>
-<h4>{{ comment }}</h4>
-<h4>{{ date }}</h4>
+
+    {% for b in bank %}
+     {{ b.bank_account }}
+        {{ b.user }}
+        {{ b.bank_account_id }}
+    {% endfor %}
+
+    {{ username }}
+{{ a }}
+    {{ ID }}
+    <p>Bank account title {{ bankform.bank_account_title }}</p>
+    <p>Bank account balance {{ bankform.bank_account_balance }}</p>
+    <p>User {{ bankform.user }}</p>
+    <p>{{ form.account_transaction_comment }}</p>
+    <p>{{ form.account_transaction_expenditure_name }}</p>
+    <p>{{ form.account_transaction_date }}</p>
+    <p>{{ form.account_transaction_amount }}</p>
+    <p>{{ form.account_transaction_currency }}</p>
+    <p>{{ form.account_jornal_status }}</p>
+    <p>{{ form.bank_account }}</p>
+
+
+
+
 <button type="submit" class="save btn btn-default">Save</button>
 </form>
 {% endblock %}
