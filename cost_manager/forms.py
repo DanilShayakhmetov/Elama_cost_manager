@@ -44,6 +44,15 @@ class ProtoGoalsForm(ModelForm):
         fields = ['account_facilities','account_goals','goals_mood',]
 
 
+
+# class ProtoMotion():
+#     class Meta():
+#         model = Account_transaction
+#         fields = ['account_title', 'account_jornal_status',
+#               'account_transaction_amount',
+#               'account_transaction_currency', 'account_transaction_comment', 'account_transaction_date', ]
+
+
 # class BankForm(forms.Form):
 #
 #     bank_acc = forms.ModelMultipleChoiceField(queryset=Account_transaction.objects.all())

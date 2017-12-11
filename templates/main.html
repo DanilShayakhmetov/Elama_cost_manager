@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Cost Manager</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Cost Manager</a>
+      <a class="navbar-brand" href="https://www.forbes.com/billionaires/list/">Cost Manager</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
@@ -58,7 +58,8 @@
 {% block GoalsList %}
 {% endblock %}
 
-
+{% block Balance %}
+{% endblock %}
 
 
 {% block CreateAccount %}
@@ -88,15 +89,15 @@
 
 
 
-
+<div class="panel panel-default" id = "footer" >
+<table width="210" border="1" style="border-collapse: collapse; text-align:center; font-size:11px; color:#000000; "><tr bgcolor=""><td height="10" valign="top" colspan="3"><style>A.forexpf_ { text-decoration: none;} A.forexpf_:visited {color: #000000;} </style><a href="http://www.forexpf.ru/" title="Курсы валют" target="_blank" class="forexpf_">Курсы валют</a></td></tr><tr bgcolor="F6EDDD"><td></td><td>Покупка</td><td>Продажа</td></tr><tr bgcolor=""><td><a href="http://www.forexpf.ru/currency_usd.asp" title="Курс доллара" target="_blank" class="forexpf_">USD/RUB</a></td><td id="usdrubbid">0.00</td><td id="usdrubask">0.00</td></tr><tr bgcolor="F6EDDD"><td><a href="http://www.forexpf.ru/currency_eur.asp" title="Курс Евро" target="_blank" class="forexpf_">EUR/RUB</a></td><td id="eurrubbid">0.00</td><td id="eurrubask">0.00</td></tr><tr bgcolor=""><td colspan="3" id="euusrutm">Данные на</td></tr></table><script src="http://informers.forexpf.ru/export/euusrub.js?nc=1"></script>
+</div>
 
 
 
 {% endif %}
 
-<div class="panel panel-default" id = "footer" >
-<table width="210" border="1" style="border-collapse: collapse; text-align:center; font-size:11px; color:#000000; "><tr bgcolor=""><td height="10" valign="top" colspan="3"><style>A.forexpf_ { text-decoration: none;} A.forexpf_:visited {color: #000000;} </style><a href="http://www.forexpf.ru/" title="Курсы валют" target="_blank" class="forexpf_">Курсы валют</a></td></tr><tr bgcolor="F6EDDD"><td></td><td>Покупка</td><td>Продажа</td></tr><tr bgcolor=""><td><a href="http://www.forexpf.ru/currency_usd.asp" title="Курс доллара" target="_blank" class="forexpf_">USD/RUB</a></td><td id="usdrubbid">0.00</td><td id="usdrubask">0.00</td></tr><tr bgcolor="F6EDDD"><td><a href="http://www.forexpf.ru/currency_eur.asp" title="Курс Евро" target="_blank" class="forexpf_">EUR/RUB</a></td><td id="eurrubbid">0.00</td><td id="eurrubask">0.00</td></tr><tr bgcolor=""><td colspan="3" id="euusrutm">Данные на</td></tr></table><script src="http://informers.forexpf.ru/export/euusrub.js?nc=1"></script>
-</div>
+
 
 
 

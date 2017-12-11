@@ -64,7 +64,7 @@ def CreateAccount(request):
     user_name = auth.get_user(request).get_username()
     USER = request.user
     USER_ID = USER.id
-    current_user = User.objects.get(id=USER_ID)
+    current_user = User.objects.filter(id=USER_ID)
     bank_form = ProtoBankForm(request.POST or None)
     args = {}
     args['ID'] = USER_ID
@@ -75,6 +75,8 @@ def CreateAccount(request):
         author.user = current_user
         author.save()
     return render(request,'CreateAccount.html',args)
+
+
 
 
 
@@ -128,6 +130,72 @@ def GoalsList(request):
     args['goals'] = list_of_goals
     return render_to_response('GoalsList.html',args)
 
+
+def Balance(request):
+    args = {}
+    user_name = auth.get_user(request).get_username()
+    USER = request.user
+    USER_ID = USER.id
+    values = Account_transaction.objects.filter(user_id=USER_ID)
+    balance_response_USD = 0
+    balance_response_EUR = 0
+    balance_response_RUR = 0
+    for value in values:
+        if value.account_transaction_currency == 'USD':
+            if value.account_jornal_status == '+':
+                balance_response_USD = balance_response_USD + value.account_transaction_amount
+            elif value.account_jornal_status == '-':
+                balance_response_USD = balance_response_USD - value.account_transaction_amount
+            else:
+                continue
+        elif value.account_transaction_currency == 'EUR':
+            if value.account_jornal_status == '+':
+                balance_response_EUR = balance_response_EUR + value.account_transaction_amount
+            elif value.account_jornal_status == '-':
+                balance_response_EUR = balance_response_EUR - value.account_transaction_amount
+            else:
+                continue
+        elif value.account_transaction_currency == 'RUR':
+            if value.account_jornal_status == '+':
+                balance_response_RUR = balance_response_RUR + value.account_transaction_amount
+            elif value.account_jornal_status == '-':
+                balance_response_RUR = balance_response_RUR - value.account_transaction_amount
+            else:
+                continue
+    args['username'] = user_name
+    args['balance_USD'] = balance_response_USD
+    args['balance_EUR'] = balance_response_EUR
+    args['balance_RUR'] = balance_response_RUR
+    return render_to_response('Balance.html',args)
+
+#
+# @csrf_protect
+# def Motion(request):
+#     user_name = auth.get_user(request).get_username()
+#     USER = request.user
+#     USER_ID = USER.id
+#     current_user = User.objects.get(id=USER_ID)
+#
+#     username = request.POST.get('Amount')
+#     password = request.POST.get('Donor')
+#     username = request.POST.get('acceptor')
+#     password = request.POST.get('Currency')
+#     username = request.POST.get('username')
+#     password = request.POST.get('password')
+#     username = request.POST.get('username')
+#     password = request.POST.get('password')
+#     form_m = ProtoForm(request.POST or None)
+#     args = {}
+#     args['ID'] = USER_ID
+#     args['username'] = user_name
+#     args['form'] = form_m
+#     if request.method == 'POST' and form_m.is_valid():
+#
+#         author = form_m.save(commit=False)
+#         author.user = current_user
+#         author.save()
+#     # return render(request, 'SendForm.html', args)
+#
 
 
 

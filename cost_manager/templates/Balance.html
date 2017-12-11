@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block Balance %}
+    <p><h2>Hello  {{ username }}</h2></p>
+
+    <p><h3>Your Balance:</h3></p>
+
+    <p><h3>USD: {% if balance_EUR >= 0 %}{{ balance_EUR }}{% else %} You are in arrears: {{ balance_EUR }}{% endif %}</h3></p>
+
+    <p><h3>USD: {% if balance_RUR >= 0 %}{{ balance_RUR }}{% else %} You are in arrears: {{ balance_RUR }}{% endif %}</h3></p>
+
+    <p><h3>USD: {% if balance_USD >= 0 %}{{ balance_USD }}{% else %} You are in arrears: {{ balance_USD }}{% endif %}</h3></p>
+
+
+{% endblock %}
