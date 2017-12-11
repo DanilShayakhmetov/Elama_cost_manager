@@ -17,7 +17,7 @@ class Account_transaction(models.Model):
     class Meta():
         db_table = 'all transaction'
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
-    bank_account = models.ForeignKey(Bank_Account, default=1 )
+    # bank_account = models.ForeignKey(Bank_Account, default=1 )
     ACCOUNT_JOURNAL_STATUS = (('+', 'Приход'), ('-', 'Расход'))
     ACCOUNT_TRANSACTION_CURRENCY = (('USD', 'dollars'), ('EUR', 'euro'), ('RUR', 'rubles'))
     TEXT_EXP = "Введите статью расходов или источник дохода"
@@ -27,6 +27,10 @@ class Account_transaction(models.Model):
     account_transaction_currency = models.CharField(verbose_name='Currency:',max_length=10,blank=True,default='rubles',choices=ACCOUNT_TRANSACTION_CURRENCY)
     account_transaction_amount = models.IntegerField(verbose_name='Amount:',default=0)
     account_transaction_comment = models.CharField(verbose_name='comment:',max_length=30,default="comment...")
+    TEXT_TITLE = "Введите имя счета, например: Основной \n Валютный \n Сберегательный"
+    account_title = models.CharField(verbose_name='Account Name:', max_length=30, blank=True, help_text=TEXT_TITLE)
+    account_balance = models.IntegerField(verbose_name='Account balance:', default=0)
+
 
 
 class Goals_Account(models.Model):

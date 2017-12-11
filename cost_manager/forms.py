@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from cost_manager.models import Account_transaction, Bank_Account , Goals_Account
+from cost_manager.models import Account_transaction, Goals_Account
 from django import forms
 
 # from django.forms.extras.widgets import SelectDateWidget
@@ -28,9 +28,8 @@ class ProtoForm(ModelForm):
 class ProtoBankForm(ModelForm):
 
     class Meta():
-        model = Bank_Account
-        fields = '__all__'
-
+        model = Account_transaction
+        fields = ['account_title','account_balance',]
 
 class ProtoGoalsForm(ModelForm):
     class Meta():

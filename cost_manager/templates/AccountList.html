@@ -11,7 +11,9 @@
     </thead>
     <tbody>
     {% for account in accounts %}
-        <tr><td><a href = '/transactions/get/{{ account.id }}'> {{ account.bank_account_title }}</a></td></tr>
+        {% if  account.account_title  %}
+        <tr><td><a href = '/transactions/get/{{ account.id }}'> {{ account.account_title }}</a></td></tr>
+        {% endif %}
     {% endfor %}
       <tr>
     </tbody>

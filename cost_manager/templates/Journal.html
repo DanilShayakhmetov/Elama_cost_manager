@@ -11,22 +11,23 @@
         <th>Expenditure</th>
         <th>Currency</th>
         <th>Amount</th>
+        <th>Balance</th>
         <th>Comment</th>
         <th>Date/time</th>
       </tr>{{ username }}
-    {{ ID }}
+
     </thead>
     <tbody>
-
-          {% for transaction in transactions %}
+          {% for items in account %}
               <tr>
-              <td>{{ account }}</td>
-              <td>{{ transaction.account_jornal_status }}</td>
-              <td>{{ transaction.account_transaction_expenditure_name }}</td>
-              <td>{{ transaction.account_transaction_currency }}</td>
-              <td>{{ transaction.account_transaction_amount }}</td>
-              <td>{{ transaction.account_transaction_comment }}</td>
-              <td>{{ transaction.account_transaction_date }}</td>
+              <td>{{ items.account_title }}</td>
+              <td>{{ items.account_jornal_status }}</td>
+              <td>{{ items.account_transaction_expenditure_name }}</td>
+              <td>{{ items.account_transaction_currency }}</td>
+              <td>{{ items.account_transaction_amount }}</td>
+              <td>{{ items.account_balance }}</td>
+              <td>{{ items.account_transaction_comment }}</td>
+              <td>{{ items.account_transaction_date }}</td>
               </tr>
           {% endfor %}
     </tbody>

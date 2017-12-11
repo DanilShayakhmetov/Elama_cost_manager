@@ -43,22 +43,18 @@ def  TryToSave ( request):
 
 @csrf_protect
 def form_test(request):
-
     user_name = auth.get_user(request).get_username()
     USER = request.user
     USER_ID = USER.id
     current_user = User.objects.get(id=USER_ID)
-    current_acc = Bank_Account.objects.get(id = 3)
     form_m = ProtoForm(request.POST or None)
     args = {}
     args['ID'] = USER_ID
     args['username'] = user_name
     args['form'] = form_m
-    args['a'] = current_acc
     if request.method == 'POST' and form_m.is_valid():
         author = form_m.save(commit=False)
         author.user = current_user
-        author.bank_account = current_acc.id
         author.save()
     return render(request,'SendForm.html',args)
 
@@ -87,7 +83,7 @@ def CreateAccount(request):
 
 
 def AccountList(request):
-    bank_account = Bank_Account.objects.all()
+    bank_account = Account_transaction.objects.all()
     user_name = auth.get_user(request).get_username()
     return render_to_response('AccountList.html',{'accounts': bank_account,'username':user_name})
 
@@ -95,15 +91,10 @@ def AccountList(request):
 
 def Journal(request, account_id = 1):
     user_name = auth.get_user(request).get_username()
-    bank_account_id  = Bank_Account.objects.get(id = account_id)
-    account =  bank_account_id.bank_account_title
-    userID = bank_account_id.user_id
-    all_transactions = Account_transaction.objects.filter(bank_account_id=account_id)
+    selected_bank_account  = Account_transaction.objects.filter(id = account_id)
     args = {}
-    args['ID'] = userID
     args['username'] = user_name
-    args['account'] = account
-    args['transactions'] =  all_transactions
+    args['account'] = selected_bank_account
     return render_to_response('Journal.html',args)
 
 
