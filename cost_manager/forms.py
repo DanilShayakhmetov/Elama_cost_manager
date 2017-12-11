@@ -19,11 +19,18 @@ from django import forms
 #     class Meta():
 #         model = Account_transaction
 #         fields = ('bank_account',)
+#
+# class ProtoForm(ModelForm):
+#     class Meta():
+#         model = Account_transaction
+#         fields = '__all__'
+
 
 class ProtoForm(ModelForm):
     class Meta():
         model = Account_transaction
-        fields = '__all__'
+        fields = ['account_title','account_jornal_status','account_transaction_expenditure_name','account_transaction_amount',
+                  'account_transaction_currency','account_transaction_comment','account_transaction_date',]
 
 class ProtoBankForm(ModelForm):
 
