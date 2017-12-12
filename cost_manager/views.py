@@ -26,7 +26,7 @@ from django.shortcuts import render
 from cost_manager.models import Account_transaction,Goals_Account
 from django.contrib import auth
 from django.contrib.auth.models import User
-
+from django.db import connection, transaction
 
 @csrf_protect
 def  TryToSave ( request):
@@ -35,8 +35,9 @@ def  TryToSave ( request):
 
 
 
-
-
+def HOME(request):
+    user_name = auth.get_user(request).get_username()
+    return render(request, 'HOME.html', {'username': user_name})
 
 
 @csrf_protect
@@ -201,6 +202,31 @@ def Motion(request):
         one.save()
         two.save()
     return render(request, 'Motion.html', args)
+
+
+#
+# def Template(request):
+#     args ={}
+#     cursor = connection.cursor()
+#     cursor.execute
+#     user_name = auth.get_user(request).get_username()
+#     USER = request.user
+#     USER_ID = USER.id
+#     my_dict = {
+#         'id': 10,
+#         'city': 20,
+#         'state': 30
+#     }
+#
+#     Account_transaction.objects.raw('SELECT * from cost_manager_all transaction
+#                            where user = %(USER_ID)s and
+#                            account_amount = %(ac)s and
+#                            state = %(state)s ', my_dict)
+#
+#
+
+
+
 
     # form_m = ProtoForm(request.POST or None)
     # args = {}

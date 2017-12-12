@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block support %}
+<div class="jumbotron text-center">
+  <h1>Manage your life.</h1>
+  <p>Hi  {{ username }} !</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Set Goals</h3>
+      <p>This application is designed to help you set<a href="/goals/new/"> goals </a> and achieve them. </p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Watch for resources</h3>
+      <p>But at the same time, do not forget about what you have<a href="/balance/"> funds </a> for this.</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Analyze actions</h3>
+      <p> <a href="/accounts/all/">Analyzes</a> its actions and <a href="/1/addPost/1"> allocates </a> resources  </p>
+    </div>
+  </div>
+</div>
+
+{%  endblock %}
