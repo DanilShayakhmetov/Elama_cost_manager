@@ -5,3 +5,4 @@
 This application uses a stack of technologies Python 3.6 Django 1.11.7 SQLite CSS/HTML Git
 
 To start the applications, call the command: |   python manage.py runserver 0:8009 | - port for example   from the context of the main directory
+(Edit Django srever cobfiguration Run -> Edit configuration.. -> Django sever -> ok button)
