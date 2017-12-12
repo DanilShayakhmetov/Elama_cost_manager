@@ -36,7 +36,7 @@ class ProtoBankForm(ModelForm):
 
     class Meta():
         model = Account_transaction
-        fields = ['account_title','account_balance',]
+        fields = ['account_title',]
 
 class ProtoGoalsForm(ModelForm):
     class Meta():
@@ -45,12 +45,18 @@ class ProtoGoalsForm(ModelForm):
 
 
 
-# class ProtoMotion():
-#     class Meta():
-#         model = Account_transaction
-#         fields = ['account_title', 'account_jornal_status',
-#               'account_transaction_amount',
-#               'account_transaction_currency', 'account_transaction_comment', 'account_transaction_date', ]
+class ProtoMotionOne(ModelForm):
+    class Meta():
+        model = Account_transaction
+        fields = ['account_title',
+              'account_transaction_amount', 'account_transaction_currency',
+                  'account_transaction_comment','account_jornal_status']
+
+class ProtoMotionTwo(ModelForm):
+    class Meta():
+        model = Account_transaction
+        fields = ['account_title','account_transaction_amount', 'account_transaction_currency',
+                  'account_transaction_comment','account_jornal_status']
 
 
 # class BankForm(forms.Form):

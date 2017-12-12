@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% block Motion %}
+
+<form action="/motion/" method="post">{% csrf_token %}
+
+<h3><p>User: {{ username }} - Id: {{ ID }}</p></h3>
+
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Donor</th>
+        <th>Acceptor</th>
+      </tr>
+    </thead>
+    <tbody>
+
+<tr>
+    <td>
+    <p>Account Title: {{ DONOR.account_title }}</p>
+    <p>Operation status: {{ DONOR.account_jornal_status }}</p>
+    <p>Amount: {{ DONOR.account_transaction_amount }}</p>
+    <p>Currency:  {{ DONOR.account_transaction_currency }}</p>
+    <p>Comment: {{ DONOR.account_transaction_comment }}</p>
+{#    <p>Date/time: {{ DONOR.account_title }}</p>#}
+    </td>
+    <td>
+    <p>Account Title: {{ ACCEPTOR.account_title }}</p>
+    <p>Operation status: {{ ACCEPTOR.account_jornal_status }}</p>
+    <p>Amount: {{ ACCEPTOR.account_transaction_amount }}</p>
+    <p>Currency:  {{ ACCEPTOR.account_transaction_currency }}</p>
+    <p>Comment: {{ ACCEPTOR.account_transaction_comment }}</p>
+{#    <p>Date/time: {{ DONOR.account_title }}</p>#}
+    </td>
+</tr>
+
+    </tbody>
+  </table>
+
+
+<button type="submit" class="save btn btn-default">Save</button>
+</form>
+{% endblock %}

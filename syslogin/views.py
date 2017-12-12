@@ -37,6 +37,7 @@ def Registered(request):
         userform = UserCreationForm(request.POST or None)
         if userform.is_valid():
             userform.save()
+            
             return redirect('/')
         else:
             args['form'] = userform

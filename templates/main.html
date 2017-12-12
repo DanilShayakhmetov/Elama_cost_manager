@@ -32,6 +32,7 @@
       <li><a href="/1/addPost/1">Expenditure/Enrollment</a></li>
       <li><a href="/create/new/">Account managing</a></li>
       <li><a href="/goals/new/">Goals</a></li>
+      <li><a href="/balance/">Balance</a></li>
         {% if username %}
         <li class="active"><a href="/auth/logout/"><ul class="align-right">Sign Out {{ username }}</ul></a></li>
         {% else %}
@@ -67,6 +68,11 @@
 
 {% block MyGoals %}
 {% endblock %}
+
+
+{% block Motion %}
+{% endblock %}
+
 
 {% endif %}
 

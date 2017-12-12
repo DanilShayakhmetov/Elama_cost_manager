@@ -20,7 +20,7 @@
 #
 # # Create your views here.
 from django.shortcuts import render_to_response
-from cost_manager.forms import AccountJournalStatus, ExpenditureName,AccountDate,AccountCurrency,AccountAmount, AccountComment, ProtoForm, ProtoBankForm,ProtoGoalsForm
+from cost_manager.forms import AccountJournalStatus, ExpenditureName,AccountDate,AccountCurrency,AccountAmount, AccountComment, ProtoForm, ProtoBankForm,ProtoGoalsForm, ProtoMotionOne, ProtoMotionTwo
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render
 from cost_manager.models import Account_transaction,Goals_Account
@@ -72,7 +72,7 @@ def CreateAccount(request):
     args['bankform'] = bank_form
     if request.method == 'POST' and bank_form.is_valid():
         author = bank_form.save(commit=False)
-        author.user = current_user
+        author.user = request.user
         author.save()
     return render(request,'CreateAccount.html',args)
 
@@ -83,7 +83,9 @@ def CreateAccount(request):
 
 
 def AccountList(request):
-    bank_account = Account_transaction.objects.all()
+    USER = request.user
+    USER_ID = USER.id
+    bank_account = Account_transaction.objects.filter(user_id = USER_ID)
     user_name = auth.get_user(request).get_username()
     return render_to_response('AccountList.html',{'accounts': bank_account,'username':user_name})
 
@@ -168,35 +170,51 @@ def Balance(request):
     args['balance_RUR'] = balance_response_RUR
     return render_to_response('Balance.html',args)
 
-#
-# @csrf_protect
-# def Motion(request):
-#     user_name = auth.get_user(request).get_username()
-#     USER = request.user
-#     USER_ID = USER.id
-#     current_user = User.objects.get(id=USER_ID)
-#
-#     username = request.POST.get('Amount')
-#     password = request.POST.get('Donor')
-#     username = request.POST.get('acceptor')
-#     password = request.POST.get('Currency')
-#     username = request.POST.get('username')
-#     password = request.POST.get('password')
-#     username = request.POST.get('username')
-#     password = request.POST.get('password')
-#     form_m = ProtoForm(request.POST or None)
-#     args = {}
-#     args['ID'] = USER_ID
-#     args['username'] = user_name
-#     args['form'] = form_m
-#     if request.method == 'POST' and form_m.is_valid():
-#
-#         author = form_m.save(commit=False)
-#         author.user = current_user
-#         author.save()
-#     # return render(request, 'SendForm.html', args)
-#
 
+
+
+
+
+
+
+
+@csrf_protect
+def Motion(request):
+    user_name = auth.get_user(request).get_username()
+    USER = request.user
+    USER_ID = USER.id
+    DONOR = ProtoMotionOne(request.POST or None)
+    ACCEPTOR = ProtoMotionTwo(request.POST or None)
+    current_user = User.objects.get(id=USER_ID)
+    args = {}
+    args['username'] = user_name
+    args['ID'] = USER_ID
+    args['DONOR'] = DONOR
+    args['ACCEPTOR'] = ACCEPTOR
+    if request.method == 'POST' and DONOR.is_valid() and ACCEPTOR.is_valid():
+        one = DONOR.save(commit=False)
+        two =  ACCEPTOR.save(commit=False)
+        one.user = current_user
+        two.user = current_user
+        one.account_journal_status = '-'
+        two.account_journal_status = '+'
+        one.save()
+        two.save()
+    return render(request, 'Motion.html', args)
+
+    # form_m = ProtoForm(request.POST or None)
+    # args = {}
+    # args['ID'] = USER_ID
+    # args['username'] = user_name
+    # args['form'] = form_m
+    # if request.method == 'POST' and form_m.is_valid():
+
+        # author = form_m.save(commit=False)
+        # author.user = current_user
+        # author.save()
+    # return render(request, 'SendForm.html', args)
+
+#
 
 
 
